@@ -1,0 +1,28 @@
+.todo-list {
+  position: relative;
+}
+
+.todo-user {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: #fff;
+  font-weight: 22px;
+}
+
+.todos {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.todo-logout {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.label {
+  color: red;
+  max-width: 500px;
+  margin: 0 auto;
+}

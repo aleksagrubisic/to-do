@@ -1,0 +1,11 @@
+.add-to-do {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.add-btn {
+  max-height: 40px;
+}
