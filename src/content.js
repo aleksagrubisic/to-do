@@ -6,22 +6,22 @@ const userList = [
     todo: [
       {
         id: Math.random(),
-        name: "Igraj wow"
+        name: "Learn React"
       },
       {
         id: Math.random(),
-        name: "Gledaj Baku"
+        name: "Go to the gym"
       }
     ]
   },
   {
     id: Math.random(),
-    email: "martina",
-    password: "123",
+    email: "test",
+    password: "test",
     todo: [
       {
         id: Math.random(),
-        name: "Maltretiraj Aleksu"
+        name: "test"
       },
     ]
   }

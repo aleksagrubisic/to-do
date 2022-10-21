@@ -9,7 +9,7 @@ const Input = (props) => {
   return (
     <div>
       <label className={styles['label']} htmlFor={props.name}>{props.name}</label>
-      <input onChange={props.onChange} className={classes} type={props.type} name={props.name}></input>
+      <input onChange={props.onChange} value={props.value} className={classes} type={props.type} name={props.name}></input>
     </div>
   )
 }

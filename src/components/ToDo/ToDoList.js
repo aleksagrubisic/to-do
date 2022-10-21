@@ -1,39 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import AddToDo from './AddToDo';
 import ToDo from './ToDo';
+import ToDoUpdate from './ToDoUpdate';
 import Button from '../UI/Button';
 
-import {useToDoContext} from '../../context/todo-context';
+import {useAuthContext} from '../../context/auth-context';
 
 import styles from './ToDoList.module.css';
 
 const ToDoList = (props) => {
 
-  const {toDos} = useToDoContext();
+  const [modal, setModal] = useState(false);
 
-  const logoutHandler = () => {
-    props.onLogout(false);
-  }
+  const {loggedUser} = useAuthContext();
 
   let content = <p className={styles['label']}>No tasks.</p>;
 
-  console.log(toDos);
-
-  if(toDos.length) {
+  if(loggedUser.todo.length) {
     content = <ul className={styles['todos']}>
-      {toDos.map(item => {
-        return <ToDo key={item.id}>{item.name}</ToDo>
+      {loggedUser.todo.map(item => {
+        return <ToDo key={item.id} id={item.id} onClick={setModal}>{item.name}</ToDo>
       })}
     </ul>
   }
 
   return (
     <div className={styles['todo-list']}>
-      {/*<span className={styles['todo-user']}>Welcome, {props.user.email}</span>*/}
-      <Button className={styles['todo-logout']} onClick={logoutHandler}>Logout</Button>
+      <span className={styles['todo-user']}>Welcome, {loggedUser.email}</span>
+      <Button className={styles['todo-logout']} onClick={() => props.onLogout(false)}>Logout</Button>
       <AddToDo></AddToDo>
       {content}
+      {modal && <ToDoUpdate taskID={modal} onClick={setModal}></ToDoUpdate>}
     </div>
   )
 }
