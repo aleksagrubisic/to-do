@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 
 import AddToDo from './AddToDo';
 import ToDo from './ToDo';
@@ -15,15 +15,33 @@ const ToDoList = (props) => {
 
   const {loggedUser} = useAuthContext();
 
-  let content = <p className={styles['label']}>No tasks.</p>;
+  // Mozes da istazis kako se koriste useMemo i useCallback, jer nam ovde reassign-uje centent prilikom svakog rerendera
 
-  if(loggedUser.todo.length) {
-    content = <ul className={styles['todos']}>
-      {loggedUser.todo.map(item => {
-        return <ToDo key={item.id} id={item.id} onClick={setModal}>{item.name}</ToDo>
-      })}
-    </ul>
-  }
+  // let content = <p className={styles['label']}>No tasks.</p>;
+
+  // if(loggedUser.todo.length) {
+  //   content = <ul className={styles['todos']}>
+  //     {loggedUser.todo.map(item => {
+  //       return <ToDo key={item.id} id={item.id} onClick={setModal}>{item.name}</ToDo>
+  //     })}
+  //   </ul>
+  // }
+
+  const content = useMemo(
+    () =>
+      loggedUser.todo.length ? (
+        <ul className={styles["todos"]}>
+          {loggedUser.todo.map((item) => (
+            <ToDo key={item.id} id={item.id} onClick={setModal}>
+              {item.name}
+            </ToDo>
+          ))}
+        </ul>
+      ) : (
+        <p className={styles["label"]}>No tasks.</p>
+      ),
+    [loggedUser.todo]
+  );
 
   return (
     <div className={styles['todo-list']}>

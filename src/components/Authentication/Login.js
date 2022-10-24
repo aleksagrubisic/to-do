@@ -31,6 +31,7 @@ const Login = (props) => {
     if(email === '' || password === '') {
       setLabel(false);
     } else {
+      // isLogged ti je ili true ili undefined, mozda bolje da je true ili false
       const isLogged = login({
         email: email,
         password: password
@@ -39,6 +40,7 @@ const Login = (props) => {
         setIsLogged(isLogged);
       }
     }
+    // Ne pokrivas slucaj kada je popunjeno sa pogresnim podacima
   };
 
   return (

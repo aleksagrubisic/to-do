@@ -6,6 +6,7 @@
   position: absolute;
   top: 20px;
   left: 20px;
+  /* Znam da ovo nema veze sa reactom ali vodi racuna na konzistenciju da ne mesas hex sa 3 i sa 6 cifara i imena kao sto su red. Mozes da napravis variable u index.css */
   color: #fff;
   font-weight: 22px;
 }

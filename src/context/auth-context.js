@@ -1,3 +1,5 @@
+// Imena file-ova treba da su konzistentna. UpperCamelCase koristimo za komponente.
+// Context filove mozes da nazoves sa camelCase ili auth.context.js i application.context.js
 import React, {useContext, useState} from 'react';
 import userList from '../content';
 
@@ -11,6 +13,7 @@ export function AuthProvider(props) {
 
   const [users, setUsers] = useState(userList);
   const [loggedUser, setLoggedUser] = useState();
+  // Mozes da ubacis login status u localStorage, da bi ostali ulogovani nakon reloada
 
   const login = (user) => {
     const res = users.filter(item => item.email === user.email && item.password === user.password);
@@ -33,6 +36,8 @@ export function AuthProvider(props) {
       ]
     });
   };
+
+  // Create, update i remove nemaju veze sa autentikacijom, to bih prebacio u svoj context
 
   const create = (task) => {
     setLoggedUser((prevState) => {

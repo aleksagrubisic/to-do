@@ -9,6 +9,8 @@ import {useAuthContext} from '../../context/auth-context';
 
 import styles from './ToDoUpdate.module.css';
 
+// Izbegavaj da stavljas vise komponenti u jedan file
+// Mozes da napravis modal kao higher order componentu u kojoj je samo logika za odtaranje i zatvaranje modala kojom mozes da wrapujes bilo koju komponentu kao sto je ToDoUpdate koja u sebi ima logiku za updatovanje ToDo item-a
 const Modal = (props) => {
 
   const [taskName, setTaskName] = useState('');

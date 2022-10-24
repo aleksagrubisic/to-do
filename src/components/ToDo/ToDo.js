@@ -1,3 +1,4 @@
+// Ovde je malo zbunjujuce sto ti se folder zove ToDo a ToDo.js je samo jedan list item. ToDo.js bih stavio da je glavna komponeta koja ti je sad ToDoList.js a ostale bih ubacio u sub foldere
 import React from 'react';
 
 import Button from '../UI/Button';
