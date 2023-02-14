@@ -1,0 +1,8 @@
+.heading {
+  color: var(--white);
+  margin-bottom: 20px;
+}
+
+.update-btn {
+  background-color: var(--dark-blue);
+}

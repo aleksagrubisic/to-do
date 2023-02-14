@@ -1,0 +1,13 @@
+.error-page {
+  margin: 0 auto;
+  max-width: 500px;
+  text-align: center;
+}
+
+.error-message {
+  color: var(--white);
+}
+
+.error-link {
+  color: var(--teal);
+}

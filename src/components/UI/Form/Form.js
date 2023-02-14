@@ -4,7 +4,9 @@ import styles from './Form.module.css';
 
 const Form = (props) => {
 
-  const classes = `${styles['form']} ${props.className}`;
+  const cName = props.className ? props.className : '';
+
+  const classes = `${styles['form']} ${cName}`;
 
   return (
     <form className={classes}>

@@ -1,15 +1,15 @@
 // Ovde je malo zbunjujuce sto ti se folder zove ToDo a ToDo.js je samo jedan list item. ToDo.js bih stavio da je glavna komponeta koja ti je sad ToDoList.js a ostale bih ubacio u sub foldere
 import React from 'react';
 
-import Button from '../UI/Button';
+import Button from '../../UI/Button/Button';
 
-import {useAuthContext} from '../../context/auth-context';
+import {useTodoContext} from '../../../context/todo.context';
 
-import styles from './ToDo.module.css';
+import styles from './Task.module.css';
 
-const ToDo = (props) => {
+const Task = (props) => {
 
-  const {remove} = useAuthContext();
+  const {remove} = useTodoContext();
 
   const removeHandler = () => {
     remove(props.id);
@@ -19,11 +19,11 @@ const ToDo = (props) => {
     <li className={styles['todo']}>
       {props.children}
       <div>
-        <Button onClick={() => props.onClick(props.id)}>Update</Button>
+        <Button onClick={() => props.onUpdateClick(props.id)}>Update</Button>
         <Button onClick={removeHandler}>Delete</Button>
       </div>
     </li>
   )
 }
 
-export default ToDo
+export default Task

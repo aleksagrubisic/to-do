@@ -1,17 +1,18 @@
-import React, {useState} from 'react'
+import React, {useState} from 'react';
+import uuid from 'react-uuid';
 
-import Input from '../UI/Input';
-import Button from '../UI/Button';
+import Input from '../../UI/Input/Input';
+import Button from '../../UI/Button/Button';
 
-import {useAuthContext} from '../../context/auth-context';
+import {useTodoContext} from '../../../context/todo.context';
 
-import styles from './AddToDo.module.css';
+import styles from './AddTask.module.css';
 
-const AddToDo = () => {
+const AddTask = () => {
 
   const [newTask, setNewTask] = useState('');
 
-  const {create} = useAuthContext();
+  const {create} = useTodoContext();
 
   const todoHandler = (e) => {
     setNewTask(e.target.value);
@@ -21,7 +22,7 @@ const AddToDo = () => {
     e.preventDefault();
     if(newTask !== '') {
       create({
-        id: Math.random(),
+        id: uuid(),
         name: newTask
       });
       setNewTask('');
@@ -36,4 +37,4 @@ const AddToDo = () => {
   )
 }
 
-export default AddToDo;
+export default AddTask;

@@ -1,11 +1,14 @@
 import React from 'react';
 
-import {AuthProvider} from './auth-context';
+import {AuthProvider} from './auth.context';
+import {TodoProvier} from './todo.context';
 
 const ApplicationContext = (props) => {
   return (
     <AuthProvider>
-      {props.children}
+      <TodoProvier>
+        {props.children}
+      </TodoProvier>
     </AuthProvider>
   )
 }

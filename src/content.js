@@ -1,7 +1,9 @@
+import uuid from 'react-uuid';
+
 const userList = [
   {
-    id: Math.random(),  // Znam da je ovo samo privremeno, ali u slucaju da nisi upoznat sa ovom bibliotekom evo link :) https://www.npmjs.com/package/uuid
-    email: "aleksa",
+    id: uuid(),  // Znam da je ovo samo privremeno, ali u slucaju da nisi upoznat sa ovom bibliotekom evo link :) https://www.npmjs.com/package/uuid
+    email: "aleksa@gmail.com",
     password: "123",
     todo: [
       {
@@ -15,8 +17,8 @@ const userList = [
     ]
   },
   {
-    id: Math.random(),
-    email: "test",
+    id: uuid(),
+    email: "test@gmail.com",
     password: "test",
     todo: [
       {

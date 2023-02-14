@@ -1,19 +1,20 @@
 import React, { useMemo, useState } from 'react';
 
-import AddToDo from './AddToDo';
-import ToDo from './ToDo';
-import ToDoUpdate from './ToDoUpdate';
-import Button from '../UI/Button';
+import AddTask from '../../components/Tasks/AddTask/AddTask';
+import Task from '../../components/Tasks/Task/Task';
+import TaskUpdate from '../../components/Tasks/TaskUpdate/TaskUpdate';
+import Modal from '../../components/UI/Modal/Modal';
+import Button from '../../components/UI/Button/Button';
 
-import {useAuthContext} from '../../context/auth-context';
+import {useAuthContext} from '../../context/auth.context';
 
-import styles from './ToDoList.module.css';
+import styles from './ToDo.module.css';
 
-const ToDoList = (props) => {
+const ToDo = () => {
 
   const [modal, setModal] = useState(false);
 
-  const {loggedUser} = useAuthContext();
+  const {loggedUser, logout} = useAuthContext();
 
   // Mozes da istazis kako se koriste useMemo i useCallback, jer nam ovde reassign-uje centent prilikom svakog rerendera
 
@@ -32,9 +33,9 @@ const ToDoList = (props) => {
       loggedUser.todo.length ? (
         <ul className={styles["todos"]}>
           {loggedUser.todo.map((item) => (
-            <ToDo key={item.id} id={item.id} onClick={setModal}>
+            <Task key={item.id} id={item.id} onUpdateClick={setModal}>
               {item.name}
-            </ToDo>
+            </Task>
           ))}
         </ul>
       ) : (
@@ -46,12 +47,14 @@ const ToDoList = (props) => {
   return (
     <div className={styles['todo-list']}>
       <span className={styles['todo-user']}>Welcome, {loggedUser.email}</span>
-      <Button className={styles['todo-logout']} onClick={() => props.onLogout(false)}>Logout</Button>
-      <AddToDo></AddToDo>
+      <Button className={styles['todo-logout']} onClick={() => {logout()}}>Logout</Button>
+      <AddTask></AddTask>
       {content}
-      {modal && <ToDoUpdate taskID={modal} onClick={setModal}></ToDoUpdate>}
+      {modal && <Modal onCloseModal={setModal}>
+        <TaskUpdate taskID={modal} onCloseModal={setModal} />
+      </Modal>}
     </div>
   )
 }
 
-export default ToDoList
+export default ToDo

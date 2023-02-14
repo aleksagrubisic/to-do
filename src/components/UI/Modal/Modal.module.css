@@ -12,7 +12,7 @@
   height: 100%;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: var(--black-transparent);
   z-index: 5;
 }
 
@@ -23,16 +23,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 10;
-  background-color: #0F8B8D;
+  background-color: var(--teal);
   border-radius: 20px;
   padding: 20px;
-}
-
-.heading {
-  color: white;
-  margin-bottom: 20px;
-}
-
-.update-btn {
-  background-color: #143642;
 }
